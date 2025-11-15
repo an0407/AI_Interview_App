@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from database import connect_to_mongo, close_mongo_connection
+from app.database import connect_to_mongo, close_mongo_connection
+from app.routers import health, auth_router
 
 app = FastAPI()
 
@@ -10,3 +11,5 @@ async def startup_event():
 @app.on_event("shutdown")
 async def shutdown_event():
     close_mongo_connection()
+app.include_router(health.router)
+app.include_router(auth_router.router)
