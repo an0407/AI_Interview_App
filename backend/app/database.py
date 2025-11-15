@@ -1,7 +1,5 @@
-# database.py
 from motor.motor_asyncio import AsyncIOMotorClient
-from config.settings import settings
-from typing import Generator
+from app.config.settings import settings
 
 client: AsyncIOMotorClient = None
 db = None
